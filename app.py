@@ -16,7 +16,7 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
 try:
-    model.load_state_dict(torch.load("nlp_model.pth", map_location=device))  # Load trained model
+    model.load_state_dict(torch.load("nlp_model.pth", map_location=device, weights_only=False)) # Load trained model
     print("Model loaded successfully!")
 except FileNotFoundError:
     print("Error: Model file 'nlp_model.pth' not found!")
