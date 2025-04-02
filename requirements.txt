@@ -3,4 +3,3 @@ flask-cors
 torch
 transformers
 gunicorn
-os
