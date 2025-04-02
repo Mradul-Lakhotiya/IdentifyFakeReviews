@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS  # Enable CORS
 from transformers import BertForSequenceClassification, BertTokenizer
 import torch
+import os
+
 
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
@@ -55,7 +57,8 @@ def predict_sentiment():
     
     return jsonify({'prediction': prediction})
 
-# Start the Flask application
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 10000))  # Get port from Render, default to 10000
+    app.run(host='0.0.0.0', port=port)
+
 
